@@ -5,7 +5,7 @@
   --bg:#0B0B0D;--card:#141417;--card2:#1A1A1E;--line:rgba(255,255,255,.07);--line2:rgba(255,255,255,.12);
   --tx:#F4F4F5;--mut:#A1A1AA;--dim:#8E8E98;
   --acc:#FF6B2C;--acc2:#FF8A57;--accSoft:rgba(255,107,44,.12);--accLine:rgba(255,107,44,.35);--accTx:#FFD2BE;
-  --push:#FF6B2C;--pull:#5AB0FF;--leg:#A78BFA;--gold:#FFD166;--red:#E5484D;
+  --push:#FF6B2C;--pull:#5AB0FF;--leg:#A78BFA;--gold:#FFD166;--red:#E5484D;--ss:#2DD4BF;
   --sat:env(safe-area-inset-top,0px);--sab:env(safe-area-inset-bottom,0px);
   --ease:cubic-bezier(.2,.8,.2,1);
 }
@@ -131,7 +131,9 @@ textarea.inp{height:auto;padding:12px 14px;resize:none;line-height:1.4}
 .stepper{display:flex;align-items:center;gap:8px}
 .stepper button{width:48px;height:48px;border-radius:15px;background:rgba(255,255,255,.07);font-size:18px;font-weight:800}
 .stepper b{min-width:56px;text-align:center;font-family:Unbounded;font-size:22px;font-weight:700}
-#toast{position:fixed;left:50%;top:calc(var(--sat) + 12px);transform:translate(-50%,-140%);z-index:80;background:var(--tx);color:var(--bg);font-weight:800;font-size:14px;padding:12px 18px;border-radius:16px;transition:transform .35s var(--ease);max-width:90vw;text-align:center}
+#toast{position:fixed;left:50%;top:calc(var(--sat) + 12px);transform:translate(-50%,-160%);z-index:90;background:var(--tx);color:var(--bg);font-weight:800;font-size:14px;padding:12px 18px;border-radius:16px;transition:transform .35s var(--ease);width:max-content;max-width:92vw;text-align:center;display:flex;align-items:center;gap:12px;box-shadow:0 12px 30px rgba(0,0,0,.45)}
+#toast.act{padding:6px 6px 6px 16px;text-align:left}
+#toast button{height:40px;padding:0 14px;border-radius:12px;background:var(--acc);color:var(--bg);font-weight:800;font-size:14px;flex-shrink:0}
 #toast.show{transform:translate(-50%,0)}
 .banner{display:flex;align-items:center;gap:10px;padding:10px 14px;border-radius:14px;background:rgba(255,209,102,.1);border:1px solid rgba(255,209,102,.3);color:var(--gold);font-size:13px;font-weight:700}
 
@@ -204,3 +206,30 @@ textarea.inp{height:auto;padding:12px 14px;resize:none;line-height:1.4}
 #undo button{height:40px;padding:0 14px;border-radius:12px;background:var(--acc);color:var(--bg);font-weight:800;font-size:14px}
 @keyframes nudge{0%,100%{transform:none}25%{transform:scale(1.04)}50%{transform:scale(.98)}75%{transform:scale(1.02)}}
 .nudge{animation:nudge .6s var(--ease)!important}
+
+/* chips de información en el entreno */
+.ichip{flex-shrink:0;height:36px;padding:0 12px;border-radius:12px;display:inline-flex;align-items:center;gap:6px;font-size:13px;font-weight:700;background:var(--card);border:1px solid var(--line);color:#D4D4D8;max-width:260px;white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
+.ichip .i{flex-shrink:0}
+.ichip.acc{background:var(--accSoft);border-color:var(--accLine);color:var(--acc)}
+.ichip.ss{background:rgba(45,212,191,.1);border-color:rgba(45,212,191,.35);color:var(--ss)}
+.ichip.warn{background:rgba(255,209,102,.1);border-color:rgba(255,209,102,.35);color:var(--gold)}
+.ichip.dim{color:var(--mut);border-style:dashed}
+/* confirmación al marcar una serie */
+@keyframes jdbg{0%{background:rgba(255,107,44,.55);border-color:var(--acc)}100%{background:var(--card);border-color:var(--line)}}
+@keyframes jdpop{0%{transform:scale(1)}35%{transform:scale(1.18)}100%{transform:scale(1)}}
+.setrow.jd{animation:jdbg .9s var(--ease) both}
+.setrow.jd .wv{display:inline-block;animation:jdpop .5s var(--ease) both;transform-origin:left center}
+.setrow.jd .ck path{stroke-dasharray:1;animation:draw .45s var(--ease) .1s both}
+.still .setrow.jd{animation:jdbg .9s var(--ease) both!important}
+.still .setrow.jd .wv{animation:jdpop .5s var(--ease) both!important}
+.still .setrow.jd .ck path{animation:draw .45s var(--ease) .1s both!important}
+@keyframes btnok{0%{transform:scale(.94)}60%{transform:scale(1.03)}100%{transform:scale(1)}}
+.done-btn.ok{animation:btnok .35s var(--ease) both}
+
+/* carrusel de avisos */
+.snap{scroll-snap-type:x mandatory}
+.snap>*{scroll-snap-align:start;min-width:calc(100% - 30px);max-width:calc(100% - 30px)}
+/* discos */
+@keyframes plin{from{opacity:0;transform:translateY(-14px)}to{opacity:1;transform:none}}
+.pl{animation:plin .45s var(--ease) both}
+.still .pl{animation:none!important}

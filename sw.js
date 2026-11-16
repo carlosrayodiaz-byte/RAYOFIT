@@ -1,5 +1,5 @@
 /* RAYOFIT service worker · red primero para los archivos de la app */
-const VERSION = '1.1.0';
+const VERSION = '1.2.0';
 const CACHE = 'rayofit-' + VERSION;
 const CORE = ['./', 'index.html', 'styles.css', 'app.js', 'manifest.webmanifest', 'unbounded.woff2', 'manrope.woff2', 'icon-192.png', 'icon-512.png', 'apple-touch-icon.png'];
 
