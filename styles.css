@@ -5,7 +5,7 @@
   --bg:#0B0B0D;--card:#141417;--card2:#1A1A1E;--line:rgba(255,255,255,.07);--line2:rgba(255,255,255,.12);
   --tx:#F4F4F5;--mut:#A1A1AA;--dim:#8E8E98;
   --acc:#FF6B2C;--acc2:#FF8A57;--accSoft:rgba(255,107,44,.12);--accLine:rgba(255,107,44,.35);--accTx:#FFD2BE;
-  --push:#FF6B2C;--pull:#5AB0FF;--leg:#A78BFA;--gold:#FFD166;--red:#E5484D;--ss:#2DD4BF;
+  --push:#FF6B2C;--pull:#5AB0FF;--leg:#F472B6;--gold:#FFD166;--red:#E5484D;--ss:#2DD4BF;
   --sat:env(safe-area-inset-top,0px);--sab:env(safe-area-inset-bottom,0px);
   --ease:cubic-bezier(.2,.8,.2,1);
 }
@@ -217,10 +217,10 @@ textarea.inp{height:auto;padding:12px 14px;resize:none;line-height:1.4}
 /* confirmación al marcar una serie */
 @keyframes jdbg{0%{background:rgba(255,107,44,.55);border-color:var(--acc)}100%{background:var(--card);border-color:var(--line)}}
 @keyframes jdpop{0%{transform:scale(1)}35%{transform:scale(1.18)}100%{transform:scale(1)}}
-.setrow.jd{animation:jdbg .9s var(--ease) both}
+.setrow.jd{animation:jdin .18s cubic-bezier(.3,1.4,.5,1) both,jdbg .9s var(--ease) both}
 .setrow.jd .wv{display:inline-block;animation:jdpop .5s var(--ease) both;transform-origin:left center}
 .setrow.jd .ck path{stroke-dasharray:1;animation:draw .45s var(--ease) .1s both}
-.still .setrow.jd{animation:jdbg .9s var(--ease) both!important}
+.still .setrow.jd{animation:jdin .18s cubic-bezier(.3,1.4,.5,1) both,jdbg .9s var(--ease) both!important}
 .still .setrow.jd .wv{animation:jdpop .5s var(--ease) both!important}
 .still .setrow.jd .ck path{animation:draw .45s var(--ease) .1s both!important}
 @keyframes btnok{0%{transform:scale(.94)}60%{transform:scale(1.03)}100%{transform:scale(1)}}
@@ -241,3 +241,36 @@ textarea.inp{height:auto;padding:12px 14px;resize:none;line-height:1.4}
 .exhero-img{flex:1;min-width:0;display:flex;align-items:center;justify-content:center}
 .exhero-img img{max-width:100%;max-height:100%;object-fit:contain}
 .exhero-mus{display:flex;flex-direction:column;align-items:center;justify-content:center;gap:4px;width:82px;flex-shrink:0;text-align:center;border-left:1px solid var(--line);padding-left:8px}
+
+/* 1.4 · descanso en el botón central y en el dock */
+.rt{display:none;position:relative;width:100%;height:100%;align-items:center;justify-content:center}
+.rt svg{position:absolute;left:50%;top:50%;transform:translate(-50%,-50%)}
+.rt .rtr{transition:stroke-dashoffset .25s linear}
+.rt b{position:relative;font-size:13px;font-weight:700;letter-spacing:-.01em;color:var(--tx);font-variant-numeric:tabular-nums}
+#tabbar a.fab.rest{background:#18181C;color:var(--tx);animation:none;box-shadow:0 10px 28px rgba(0,0,0,.55),0 0 0 1px rgba(255,107,44,.35)}
+#tabbar a.fab.rest>svg.i,.dockrt.rest>svg.i{display:none}
+.fab.rest .rt,.dockrt.rest .rt{display:flex}
+.dockrt.rest{padding:0}
+.beat{animation:beat .5s ease-in-out 2!important}
+@keyframes beat{0%,100%{transform:scale(1)}40%{transform:scale(1.14)}}
+/* 1.4 · récord encima del descanso */
+.prb{position:fixed;left:14px;right:14px;top:calc(var(--sat) + 78px);z-index:80;display:flex;align-items:center;gap:12px;padding:14px 16px 16px;border-radius:22px;background:rgba(36,30,16,.97);border:1px solid rgba(255,209,102,.45);box-shadow:0 18px 40px rgba(0,0,0,.6);overflow:hidden;color:var(--tx);text-align:left;animation:prin .45s cubic-bezier(.3,1.4,.5,1) both;max-width:520px;margin:0 auto}
+.prb.out{opacity:0;transform:translateY(-10px) scale(.97);transition:opacity .2s,transform .2s}
+.prico{width:46px;height:46px;border-radius:15px;background:var(--gold);color:#0B0B0D;display:flex;align-items:center;justify-content:center;flex-shrink:0}
+.prbar{position:absolute;left:0;bottom:0;height:3px;width:100%;background:var(--gold);transform-origin:left;animation:prt 2.5s linear .45s both}
+@keyframes prin{from{transform:translateY(-14px) scale(.96);opacity:0}}
+@keyframes prt{to{transform:scaleX(0)}}
+/* 1.4 · barra con discos */
+.plrow{display:flex;align-items:center;justify-content:center;gap:8px;margin-top:-6px}
+.plrow span{font-size:13px;font-weight:700;color:var(--accTx);white-space:nowrap}
+#restPl{display:flex;align-items:center;justify-content:center;gap:8px}
+/* 1.4 · serie hecha: fila que entra y contador que salta */
+@keyframes jdin{from{transform:translateY(-6px)}to{transform:none}}
+.cnt{display:inline-block}
+.cnt.pop1,.still .cnt.pop1{animation:cpop .32s cubic-bezier(.3,1.4,.5,1) both}
+@keyframes cpop{0%{transform:scale(1)}45%{transform:scale(1.15)}100%{transform:scale(1)}}
+/* 1.4 · vibración (interruptor oculto, iOS 18+) */
+.hap{position:fixed;left:-200px;top:0;opacity:0;pointer-events:none}
+/* 1.4 · «Serie hecha» a la vista en pantallas bajas */
+@media (max-height:700px){.setcard .step{height:56px}.setcard{gap:12px}}
+@media (prefers-reduced-motion: reduce){.beat,.prb,.prbar,.cnt.pop1{animation:none!important}}

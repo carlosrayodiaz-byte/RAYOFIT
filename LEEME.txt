@@ -1,0 +1,12 @@
+RAYOFIT 1.4.0 · actualización
+
+Archivos que cambian (4): app.js, styles.css, index.html, sw.js
+No cambian: Code.gs, la Sheet, las ilustraciones ni CREDITOS.md.
+
+1. GitHub → repo RAYOFIT → Add file → Upload files.
+2. Arrastra los 4 archivos sueltos (no la carpeta) y pulsa Commit changes.
+3. Espera 1-2 minutos a que se actualice GitHub Pages.
+4. En el iPhone: cierra RAYOFIT del todo (deslizar hacia arriba) y ábrela dos veces.
+5. Comprueba al final de Útiles › Ajustes que pone «RAYOFIT 1.4.0».
+
+Si tienes un entreno a medias, puedes actualizar igual: se abre donde lo dejaste.
