@@ -233,3 +233,11 @@ textarea.inp{height:auto;padding:12px 14px;resize:none;line-height:1.4}
 @keyframes plin{from{opacity:0;transform:translateY(-14px)}to{opacity:1;transform:none}}
 .pl{animation:plin .45s var(--ease) both}
 .still .pl{animation:none!important}
+
+/* ilustraciones de ejercicios */
+.thumb{border-radius:12px;background:#1C1C21;border:1px solid rgba(255,255,255,.05);display:flex;align-items:center;justify-content:center;overflow:hidden;flex-shrink:0}
+.thumb img{width:100%;height:100%;object-fit:contain;padding:3px}
+.exhero{display:flex;gap:10px;align-items:stretch;width:100%;border-radius:20px;background:#17171B;border:1px solid var(--line);padding:10px;overflow:hidden;text-align:left}
+.exhero-img{flex:1;min-width:0;display:flex;align-items:center;justify-content:center}
+.exhero-img img{max-width:100%;max-height:100%;object-fit:contain}
+.exhero-mus{display:flex;flex-direction:column;align-items:center;justify-content:center;gap:4px;width:82px;flex-shrink:0;text-align:center;border-left:1px solid var(--line);padding-left:8px}
