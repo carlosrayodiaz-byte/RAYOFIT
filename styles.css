@@ -121,6 +121,7 @@ input,textarea,select{font-size:16px}
 .conf{position:absolute;top:0;border-radius:2px;animation:fall linear both}
 .sheet-bg{position:fixed;inset:0;z-index:60;background:rgba(0,0,0,.55);animation:fade .25s ease both}
 .sheet{position:fixed;left:0;right:0;bottom:0;z-index:61;max-height:88vh;overflow-y:auto;border-radius:30px 30px 0 0;background:var(--card);border-top:1px solid var(--line2);padding:10px 18px calc(var(--sab) + 22px);display:flex;flex-direction:column;gap:12px;animation:sheet .4s var(--ease) both;scrollbar-width:none}
+.sheet>*{flex-shrink:0}
 .sheet .grab{width:40px;height:5px;border-radius:3px;background:rgba(255,255,255,.2);align-self:center;flex-shrink:0}
 .field{display:flex;flex-direction:column;gap:6px}
 .field label{font-size:13px;font-weight:700;color:var(--mut)}
@@ -194,3 +195,12 @@ textarea.inp{height:auto;padding:12px 14px;resize:none;line-height:1.4}
 /* re-render sin repetir animaciones de entrada */
 .still .up,.still .draw,.still .grow,.still .bar,.still .area,.still .pop,.still .zoom{animation:none!important}
 .still .draw{stroke-dashoffset:0}
+
+/* deshacer */
+#undo{position:fixed;left:50%;top:calc(var(--sat) + 86px);transform:translate(-50%,-30px);opacity:0;pointer-events:none;z-index:85;display:flex;align-items:center;gap:14px;padding:8px 8px 8px 16px;border-radius:16px;background:#26262B;border:1px solid rgba(255,255,255,.12);box-shadow:0 12px 30px rgba(0,0,0,.5);font-size:14px;font-weight:700;white-space:nowrap;transition:transform .3s var(--ease),opacity .25s}
+#undo.show{transform:translate(-50%,0);opacity:1;pointer-events:auto}
+#undo.tab{top:auto;bottom:calc(var(--sab) + 96px);transform:translate(-50%,40px)}
+#undo.tab.show{transform:translate(-50%,0)}
+#undo button{height:40px;padding:0 14px;border-radius:12px;background:var(--acc);color:var(--bg);font-weight:800;font-size:14px}
+@keyframes nudge{0%,100%{transform:none}25%{transform:scale(1.04)}50%{transform:scale(.98)}75%{transform:scale(1.02)}}
+.nudge{animation:nudge .6s var(--ease)!important}
