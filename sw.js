@@ -1,7 +1,7 @@
 /* RAYOFIT service worker · red primero para los archivos de la app */
-const VERSION = '1.0.0';
+const VERSION = '1.0.1';
 const CACHE = 'rayofit-' + VERSION;
-const CORE = ['./', 'index.html', 'styles.css', 'app.js', 'manifest.webmanifest', 'fonts/unbounded.woff2', 'fonts/manrope.woff2', 'img/icon-192.png', 'img/icon-512.png', 'img/apple-touch-icon.png'];
+const CORE = ['./', 'index.html', 'styles.css', 'app.js', 'manifest.webmanifest', 'unbounded.woff2', 'manrope.woff2', 'icon-192.png', 'icon-512.png', 'apple-touch-icon.png'];
 
 self.addEventListener('install', (e) => {
   e.waitUntil(caches.open(CACHE).then((c) => Promise.all(CORE.map((u) => c.add(new Request(u, { cache: 'reload' })).catch(() => null)))).then(() => self.skipWaiting()));
